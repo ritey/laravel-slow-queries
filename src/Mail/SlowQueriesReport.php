@@ -11,11 +11,27 @@ class SlowQueriesReport extends Mailable
     use Queueable;
     use SerializesModels;
 
-    public function __construct(
-        public string $attachmentPath,
-        public int $attachmentSizeBytes,
-        public ?string $subjectLine = null
-    ) {}
+    /**
+     * @var string
+     */
+    public $attachmentPath;
+
+    /**
+     * @var int
+     */
+    public $attachmentSizeBytes;
+
+    /**
+     * @var string|null
+     */
+    public $subjectLine;
+
+    public function __construct($attachmentPath, $attachmentSizeBytes, $subjectLine = null)
+    {
+        $this->attachmentPath = $attachmentPath;
+        $this->attachmentSizeBytes = $attachmentSizeBytes;
+        $this->subjectLine = $subjectLine;
+    }
 
     public function build()
     {

@@ -40,8 +40,9 @@ class SlowQueriesServiceProvider extends ServiceProvider
             $this->app->afterResolving(Schedule::class, function (Schedule $schedule) {
                 $schedule->command('slow-queries:email')
                     ->everyTenMinutes()
-                    ->when(fn () => (bool) config('slow-queries.enabled'))
-                ;
+                    ->when(function () {
+                        return (bool) config('slow-queries.enabled');
+                    });
             });
         }
     }

@@ -13,35 +13,32 @@ class EmailSlowQueriesReport extends Command
     protected $signature = 'slow-queries:email';
     protected $description = 'Email the slow query log and rotate/truncate the file';
 
-    public function handle(): int
+    public function handle()
     {
+        // Laravel 6/7 compatibility: use 0 for success, 1 for failure
         if (!config('slow-queries.enabled')) {
             $this->info('Slow queries disabled. Skipping.');
-
-            return self::SUCCESS;
+            return 0;
         }
 
         $to = config('slow-queries.email_to');
         if (!$to) {
             $this->warn('No slow-queries.email_to configured. Skipping.');
-
-            return self::SUCCESS;
+            return 0;
         }
 
         $logPath = Paths::logAbsolutePath();
 
         if (!File::exists($logPath) || 0 === File::size($logPath)) {
             $this->info('No slow queries to send.');
-
-            return self::SUCCESS;
+            return 0;
         }
 
         $sendingPath = $logPath.'.sending-'.now()->format('YmdHis').'-'.uniqid('', true);
 
         if (!@rename($logPath, $sendingPath)) {
             $this->error('Failed to rotate slow query log (rename).');
-
-            return self::FAILURE;
+            return 1;
         }
 
         // Recreate empty log so DB::listen can continue
@@ -50,9 +47,9 @@ class EmailSlowQueriesReport extends Command
         try {
             $size = File::size($sendingPath) ?? 0;
             Mail::to($to)->send(new SlowQueriesReport(
-                attachmentPath: $sendingPath,
-                attachmentSizeBytes: $size,
-                subjectLine: config('slow-queries.email_subject')
+                $sendingPath,
+                $size,
+                config('slow-queries.email_subject')
             ));
             $this->info("Slow query report emailed to {$to} ({$size} bytes).");
         } catch (\Throwable $e) {
@@ -63,6 +60,6 @@ class EmailSlowQueriesReport extends Command
             @unlink($sendingPath);
         }
 
-        return self::SUCCESS;
+        return 0;
     }
 }
