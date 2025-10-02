@@ -1,6 +1,6 @@
 <?php
 
-namespace Vendor\SlowQueries\Support;
+namespace Ritey\SlowQueries\Support;
 
 class Paths
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Vendor\SlowQueries\Mail;
+namespace Ritey\SlowQueries\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;

@@ -1,17 +1,17 @@
 {
-  "name": "vendor/laravel-slow-queries",
+  "name": "ritey/laravel-slow-queries",
   "description": "Collects slow queries via DB::listen, batches them every 10 minutes, emails and rotates.",
   "type": "library",
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Vendor\\SlowQueries\\": "src/"
+      "Ritey\\SlowQueries\\": "src/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "Vendor\\SlowQueries\\SlowQueriesServiceProvider"
+        "Ritey\\SlowQueries\\SlowQueriesServiceProvider"
       ]
     }
   },

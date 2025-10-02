@@ -1,13 +1,13 @@
 <?php
 
-namespace Vendor\SlowQueries;
+namespace Ritey\SlowQueries;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
-use Vendor\SlowQueries\Console\EmailSlowQueriesReport;
-use Vendor\SlowQueries\Support\Paths;
+use Ritey\SlowQueries\Console\EmailSlowQueriesReport;
+use Ritey\SlowQueries\Support\Paths;
 
 class SlowQueriesServiceProvider extends ServiceProvider
 {

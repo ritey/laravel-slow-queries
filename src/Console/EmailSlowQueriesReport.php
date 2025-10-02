@@ -1,12 +1,12 @@
 <?php
 
-namespace Vendor\SlowQueries\Console;
+namespace Ritey\SlowQueries\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
-use Vendor\SlowQueries\Mail\SlowQueriesReport;
-use Vendor\SlowQueries\Support\Paths;
+use Ritey\SlowQueries\Mail\SlowQueriesReport;
+use Ritey\SlowQueries\Support\Paths;
 
 class EmailSlowQueriesReport extends Command
 {
