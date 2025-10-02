@@ -1,0 +1,26 @@
+{
+  "name": "vendor/laravel-slow-queries",
+  "description": "Collects slow queries via DB::listen, batches them every 10 minutes, emails and rotates.",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Vendor\\SlowQueries\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Vendor\\SlowQueries\\SlowQueriesServiceProvider"
+      ]
+    }
+  },
+  "require": {
+    "php": ">=8.1",
+    "illuminate/support": "^10.0|^11.0",
+    "illuminate/console": "^10.0|^11.0",
+    "illuminate/mail": "^10.0|^11.0",
+    "illuminate/filesystem": "^10.0|^11.0",
+    "illuminate/database": "^10.0|^11.0"
+  }
+}
