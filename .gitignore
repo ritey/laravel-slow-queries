@@ -1,0 +1,46 @@
+# --- Dependencies / build output ---
+/vendor/
+/node_modules/
+/dist/
+/build/
+/coverage/
+clover.xml
+junit.xml
+
+# --- Composer ---
+# For packages/libraries, don't commit composer.lock
+/composer.lock
+
+# --- Environment & local config ---
+.env
+.env.*
+.php-version
+
+# --- PHP tools & caches ---
+.phpunit.result.cache
+.phpunit.cache
+.php-cs-fixer.cache
+.php_cs.cache
+/.php-cs-fixer.cache
+/.php-cs-fixer.php # keep if you generate it; otherwise ignore
+.phpstan.cache
+/phpstan/resultCache.php
+/psalm.xml.cache
+
+# --- Laravel / Testbench scratch (sometimes created during tests) ---
+/storage/
+/bootstrap/cache/
+
+# --- IDE / OS junk ---
+/.idea/
+/.vscode/
+/.nbproject/
+/*.iml
+.DS_Store
+Thumbs.db
+
+# --- Logs & misc ---
+*.log
+*.tmp
+*.swp
+*.swo
